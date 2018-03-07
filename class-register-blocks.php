@@ -21,7 +21,18 @@ class Register_Blocks {
 	 */
 	protected function init() {
 
-//		add_action( 'enqueue_block_editor_assets', array( $this, 'register_sample_block' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'register_editor_block' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'register_frontend_block' ) );
+	}
+
+	function register_editor_block() {
+		wp_enqueue_script( 'rt-blocks-js', RT_BLOCKS_DIR_URL . '/blocks/build/build.js', array( 'wp-blocks', 'wp-i18n', 'wp-element' ), RT_BLOCKS_VER );
+	}
+
+	function register_frontend_block() {
+		if ( ! is_admin() ) {
+			wp_enqueue_style( 'rt-blocks-css', RT_BLOCKS_DIR_URL . '/blocks/build/style.css', array(), RT_BLOCKS_VER );
+		}
 	}
 }
 
