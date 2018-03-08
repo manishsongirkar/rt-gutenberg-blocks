@@ -30,9 +30,9 @@ class Register_Blocks {
 	}
 
 	function register_frontend_block() {
-		if ( ! is_admin() ) {
+//		if ( ! is_admin() ) {
 			wp_enqueue_style( 'rt-blocks-css', RT_BLOCKS_DIR_URL . '/blocks/build/style.css', array(), RT_BLOCKS_VER );
-		}
+//		}
 	}
 }
 

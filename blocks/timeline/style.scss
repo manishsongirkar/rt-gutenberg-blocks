@@ -52,6 +52,7 @@
 
 		h3 {
 			background: #f1f1f1;
+			line-height: 30px;
 			margin: 0;
 			overflow: hidden;
 			padding: 10px;
@@ -67,6 +68,11 @@
 		p {
 			margin: 0;
 			padding: 10px;
+
+			.dashicons {
+				line-height: 30px;
+				margin-right: 10px;
+			}
 		}
 	}
 
@@ -96,7 +102,20 @@
 		padding: 0 10px 10px;
 
 		a {
+			border-right: 1px solid #ddd;
 			margin: 0 10px 0 0;
+			padding: 0 10px 0 0;
+
+			&:last-child {
+				border-right: 0;
+			}
 		}
+	}
+}
+
+.editor-block-list__block-edit {
+	.postlinks a {
+		cursor: not-allowed;
+		pointer-events: none;
 	}
 }

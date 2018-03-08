@@ -19,7 +19,7 @@ const {
 registerBlockType( 'rt-blocks/timeline', {
 
 	title: __( 'Timeline' ),
-	icon: 'editor-table',
+	icon: 'list-view',
 	category: 'common',
 
 	attributes: {
@@ -132,29 +132,48 @@ registerBlockType( 'rt-blocks/timeline', {
 				}
 
 				<div className={ 'timeline-container' }>
+					<time className='timeline-date'>
+						{
+							releaseDate ? moment( releaseDate ).local().format( 'MMM, Y' ) : ''
+						}
+					</time>
 
-					<RichText
-						className={ 'timeline-title' }
-						tagName={ 'h3' }
-						onChange={ onTitleChange }
-						value={ timelineTitle }
-						focus={ setFocus }
-						placeholder={ __( 'Title' ) }
-						onFocus={ onFocusTitle }
-						inline={ true }
-					/>
+					<div className="separator"></div>
 
-					<RichText
-						tagName={ 'p' }
-						className={ 'timeline-description' }
-						inline={ true }
-						placeholder={ __( 'Enter contributors list here' ) }
-						value={ timelineContent }
-						onChange={ onContentChange }
-						focus={ setFocus }
-						onFocus={ onFocusContent }
-						aria-autocomplete="list"
-					/>
+					<div className="content-wrap">
+						<div className="content-inner">
+							<RichText
+								className={ 'timeline-title' }
+								tagName={ 'h3' }
+								onChange={ onTitleChange }
+								value={ timelineTitle }
+								focus={ setFocus }
+								placeholder={ __( 'Title' ) }
+								onFocus={ onFocusTitle }
+							/>
+
+							<RichText
+								tagName={ 'p' }
+								className={ 'timeline-description' }
+								inline={ true }
+								placeholder={ __( 'Enter contributors list here' ) }
+								value={ timelineContent }
+								onChange={ onContentChange }
+								focus={ setFocus }
+								onFocus={ onFocusContent }
+								children={ <span class="dashicons dashicons-groups"></span> }
+							/>
+							<div className='postlinks'>
+								{ ( newslink || bloglink ) ? <strong>Links: </strong> : null }
+								{
+									newslink ? <a href={ newslink } className='timeline-news-link'>{ __( 'News' ) }</a> : ''
+								}
+								{
+									bloglink ? <a href={ bloglink } className='timeline-blog-link'>{ __( 'Blog' ) }</a> : ''
+								}
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		);
@@ -177,9 +196,11 @@ registerBlockType( 'rt-blocks/timeline', {
 		return (
 			<div className={ className + ' timeline-' + releaseType }>
 				<div className={ 'timeline-container' }>
-					{
-						releaseDate ? <time className='timeline-date'>{ moment( releaseDate ).local().format( 'MMM, Y' ) }</time> : ''
-					}
+					<time className='timeline-date'>
+						{
+							releaseDate ? moment( releaseDate ).local().format( 'MMM, Y' ) : ''
+						}
+					</time>
 
 					<div className="separator"></div>
 
@@ -191,16 +212,18 @@ registerBlockType( 'rt-blocks/timeline', {
 									( 'minor' === releaseType ) ? <span>(Minor Release)</span> : ''
 								}
 							</h3>
-							<p className='timeline-description'>
-								<strong>{ __( 'Contributers:' ) } </strong>
+							<p className='timeline-description' title='Contributors'>
+								<span class="dashicons dashicons-groups"></span>
 								{ timelineContent }
 							</p>
 							<div className='postlinks'>
+								{ ( newslink || bloglink ) ? <strong>Links: </strong> : null }
+
 								{
-									newslink ? <a href={ newslink } className='timeline-news-link'>{ __( 'Release Note' ) }</a> : ''
+									newslink ? <a href={ newslink } className='timeline-news-link'>{ __( 'News' ) }</a> : ''
 								}
 								{
-									bloglink ? <a href={ bloglink } className='timeline-blog-link'>{ __( 'Blog Article' ) }</a> : ''
+									bloglink ? <a href={ bloglink } className='timeline-blog-link'>{ __( 'Blog' ) }</a> : ''
 								}
 							</div>
 						</div>
