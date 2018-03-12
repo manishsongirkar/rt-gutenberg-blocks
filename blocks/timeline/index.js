@@ -55,7 +55,19 @@ registerBlockType( 'rt-blocks/timeline', {
 
 	edit: props => {
 
-		const { focus, attributes: { releaseType, releaseDate, timelineTitle, timelineContent, newslink, bloglink }, className, setFocus } = props;
+		const {
+			attributes: {
+				releaseType,
+				releaseDate,
+				timelineTitle,
+				timelineContent,
+				newslink,
+				bloglink
+			},
+			className,
+			focus,
+			setFocus
+		} = props;
 		const availableTypes = [
 			{ value: 'major', label: __( 'Major Release' ) },
 			{ value: 'minor', label: __( 'Minor Release' ) },
@@ -99,6 +111,7 @@ registerBlockType( 'rt-blocks/timeline', {
 				{
 					!! focus && (
 						<InspectorControls key={ 'inspector' }>
+
 							<SelectControl
 								type={ 'select' }
 								label={ __( 'WordPress Release Type' ) }
@@ -127,6 +140,7 @@ registerBlockType( 'rt-blocks/timeline', {
 								value={ bloglink }
 								onChange={ onChangebloglink }
 							/>
+
 						</InspectorControls>
 					)
 				}
@@ -163,6 +177,7 @@ registerBlockType( 'rt-blocks/timeline', {
 								onFocus={ onFocusContent }
 								children={ <span class="dashicons dashicons-groups"></span> }
 							/>
+
 							<div className='postlinks'>
 								{ ( newslink || bloglink ) ? <strong>Links: </strong> : null }
 								{

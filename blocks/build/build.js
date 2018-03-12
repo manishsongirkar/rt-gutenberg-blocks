@@ -134,8 +134,7 @@ registerBlockType('rt-blocks/timeline', {
 	},
 
 	edit: function edit(props) {
-		var focus = props.focus,
-		    _props$attributes = props.attributes,
+		var _props$attributes = props.attributes,
 		    releaseType = _props$attributes.releaseType,
 		    releaseDate = _props$attributes.releaseDate,
 		    timelineTitle = _props$attributes.timelineTitle,
@@ -143,6 +142,7 @@ registerBlockType('rt-blocks/timeline', {
 		    newslink = _props$attributes.newslink,
 		    bloglink = _props$attributes.bloglink,
 		    className = props.className,
+		    focus = props.focus,
 		    setFocus = props.setFocus;
 
 		var availableTypes = [{ value: 'major', label: __('Major Release') }, { value: 'minor', label: __('Minor Release') }];
