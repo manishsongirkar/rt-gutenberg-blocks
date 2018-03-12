@@ -50,6 +50,10 @@
 	.content-wrap {
 		padding-left: 10px;
 
+		.timeline-minor & {
+			padding-left: 30px;
+		}
+
 		h3 {
 			background: #f1f1f1;
 			line-height: 30px;
@@ -57,7 +61,7 @@
 			overflow: hidden;
 			padding: 10px;
 
-			span {
+			.minor-release {
 				float: right;
 				font-size: 14px;
 				font-style: italic;

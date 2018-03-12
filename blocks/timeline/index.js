@@ -27,13 +27,13 @@ registerBlockType( 'rt-blocks/timeline', {
 		timelineTitle: {
 			type: 'array',
 			source: 'children',
-			selector: '.timeline-title',
+			selector: '.timelineTitle',
 		},
 
 		timelineContent : {
 			type: 'array',
 			source: 'children',
-			selector: '.timeline-description',
+			selector: '.contributor',
 		},
 
 		releaseType: {
@@ -41,13 +41,24 @@ registerBlockType( 'rt-blocks/timeline', {
 			default: 'major'
 		},
 
+		releaseDate: {
+			type: 'string',
+			source: 'attribute',
+			attribute: 'data-time',
+			selector: '.timeline-date',
+		},
+
 		newslink: {
 			type: 'url',
+			source: 'attribute',
+			attribute: 'href',
 			selector: '.timeline-news-link',
 		},
 
 		bloglink: {
 			type: 'url',
+			source: 'attribute',
+			attribute: 'href',
 			selector: '.timeline-blog-link',
 		},
 
@@ -64,10 +75,10 @@ registerBlockType( 'rt-blocks/timeline', {
 				newslink,
 				bloglink
 			},
-			className,
 			focus,
 			setFocus
 		} = props;
+
 		const availableTypes = [
 			{ value: 'major', label: __( 'Major Release' ) },
 			{ value: 'minor', label: __( 'Minor Release' ) },
@@ -105,6 +116,8 @@ registerBlockType( 'rt-blocks/timeline', {
 		const onFocusContent = focus => {
 			props.setFocus( _.extend( {}, focus, { editable: 'timelineContent' } ) );
 		};
+
+		const className = props.className ? props.className : '';
 
 		return (
 			<div className={ className + ' timeline-' + releaseType }>
@@ -146,7 +159,7 @@ registerBlockType( 'rt-blocks/timeline', {
 				}
 
 				<div className={ 'timeline-container' }>
-					<time className='timeline-date'>
+					<time className='timeline-date' data-time={ releaseDate }>
 						{
 							releaseDate ? moment( releaseDate ).local().format( 'MMM, Y' ) : ''
 						}
@@ -169,13 +182,11 @@ registerBlockType( 'rt-blocks/timeline', {
 							<RichText
 								tagName={ 'p' }
 								className={ 'timeline-description' }
-								inline={ true }
 								placeholder={ __( 'Enter contributors list here' ) }
 								value={ timelineContent }
 								onChange={ onContentChange }
 								focus={ setFocus }
 								onFocus={ onFocusContent }
-								children={ <span class="dashicons dashicons-groups"></span> }
 							/>
 
 							<div className='postlinks'>
@@ -197,21 +208,22 @@ registerBlockType( 'rt-blocks/timeline', {
 	save: props => {
 
 		const {
-				  className,
-				  attributes: {
-					  releaseType,
-					  releaseDate,
-					  timelineTitle,
-					  timelineContent,
-					  newslink,
-					  bloglink
-				  }
-			  } = props;
+			attributes: {
+				releaseType,
+				releaseDate,
+				timelineTitle,
+				timelineContent,
+				newslink,
+				bloglink
+			}
+		} = props;
+
+		const className = props.className ? props.className : '';
 
 		return (
 			<div className={ className + ' timeline-' + releaseType }>
 				<div className={ 'timeline-container' }>
-					<time className='timeline-date'>
+					<time className='timeline-date' data-time={ releaseDate }>
 						{
 							releaseDate ? moment( releaseDate ).local().format( 'MMM, Y' ) : ''
 						}
@@ -219,17 +231,21 @@ registerBlockType( 'rt-blocks/timeline', {
 
 					<div className="separator"></div>
 
-					<div className="content-wrap">
+					<div className='content-wrap'>
 						<div className="content-inner">
 							<h3 className='timeline-title'>
-								{ timelineTitle }
+								<span className='timelineTitle'>
+									{ timelineTitle }
+								</span>
 								{
-									( 'minor' === releaseType ) ? <span>(Minor Release)</span> : ''
+									( 'minor' === releaseType ) ? <span className='minor-release'>(Minor Release)</span> : ''
 								}
 							</h3>
 							<p className='timeline-description' title='Contributors'>
 								<span class="dashicons dashicons-groups"></span>
-								{ timelineContent }
+								<span className="contributor">
+									{ timelineContent }
+								</span>
 							</p>
 							<div className='postlinks'>
 								{ ( newslink || bloglink ) ? <strong>Links: </strong> : null }
