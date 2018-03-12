@@ -52,10 +52,15 @@
         line-height: 30px; }
     .timeline-container .content-wrap p {
       margin: 0;
-      padding: 10px; }
+      overflow: hidden;
+      padding: 10px 10px 10px 40px;
+      position: relative; }
       .timeline-container .content-wrap p .dashicons {
+        font-size: 24px;
+        left: 10px;
         line-height: 30px;
-        margin-right: 10px; }
+        position: absolute;
+        top: 10px; }
   .timeline-container .content-inner {
     border-radius: 4px;
     border: 1px solid #f1f1f1;
@@ -77,10 +82,15 @@
       pointer-events: none; }
   .timeline-container .postlinks {
     padding: 0 10px 10px; }
+    .timeline-container .postlinks strong {
+      margin-right: 5px; }
     .timeline-container .postlinks a {
       border-right: 1px solid #ddd;
       margin: 0 10px 0 0;
       padding: 0 10px 0 0; }
+      .timeline-container .postlinks a:hover, .timeline-container .postlinks a:focus {
+        border: 0;
+        text-decoration: none; }
       .timeline-container .postlinks a:last-child {
         border-right: 0; }
 
