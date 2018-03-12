@@ -67,9 +67,13 @@
 
 		p {
 			margin: 0;
-			overflow: hidden;
-			padding: 10px 10px 10px 40px;
-			position: relative;
+			padding: 10px;
+
+			&:not(.blocks-rich-text__tinymce) {
+				overflow: hidden;
+				padding: 10px 10px 10px 40px;
+				position: relative;
+			}
 
 			.dashicons {
 				font-size: 24px;
