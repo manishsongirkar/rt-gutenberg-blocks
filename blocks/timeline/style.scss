@@ -136,6 +136,14 @@
 	}
 }
 
+.entry-content .timeline-container .postlinks a {
+	&:hover,
+	&:focus {
+		border: 0;
+		text-decoration: none;
+	}
+}
+
 .editor-block-list__block-edit {
 	.postlinks a {
 		cursor: not-allowed;
