@@ -7,7 +7,7 @@ const {
 		  registerBlockType,
 		  RichText,
 		  source: { children },
-		  InspectorControls
+		  InspectorControls,
 	  } = wp.blocks;
 
 const {
@@ -21,6 +21,7 @@ registerBlockType( 'rt-blocks/timeline', {
 	title: __( 'Timeline' ),
 	icon: 'list-view',
 	category: 'common',
+	description: __( 'Used to show WordPress contributors list' ),
 
 	attributes: {
 
@@ -73,7 +74,7 @@ registerBlockType( 'rt-blocks/timeline', {
 				timelineTitle,
 				timelineContent,
 				newslink,
-				bloglink
+				bloglink,
 			},
 			focus,
 			setFocus

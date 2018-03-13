@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: rtBlocks - Manish
- * Description: Timeline - Gutenberg Block.
+ * Plugin Name: rtBlocks
+ * Description: Custom Gutenberg Block.
  * Author: rtCamp, Manish
  * Author URI: https://rtcamp.com/
  * Version: 0.1
