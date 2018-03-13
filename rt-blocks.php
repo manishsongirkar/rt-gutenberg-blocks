@@ -24,6 +24,10 @@ if ( ! defined( 'RT_BLOCKS_DIR_URL' ) ) {
 	define( 'RT_BLOCKS_DIR_URL', plugin_dir_url( __FILE__ ) );
 }
 
+if ( ! defined( 'RT_BLOCKS_DIR_PATH' ) ) {
+	define( 'RT_BLOCKS_DIR_PATH', plugin_dir_path( __FILE__ ) );
+}
+
 if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
