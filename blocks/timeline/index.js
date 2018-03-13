@@ -44,7 +44,7 @@ registerBlockType( 'rt-blocks/timeline', {
 		releaseDate: {
 			type: 'string',
 			source: 'attribute',
-			attribute: 'data-time',
+			attribute: 'datetime',
 			selector: '.timeline-date',
 		},
 
@@ -159,7 +159,7 @@ registerBlockType( 'rt-blocks/timeline', {
 				}
 
 				<div className={ 'timeline-container' }>
-					<time className='timeline-date' data-time={ releaseDate }>
+					<time className='timeline-date' datetime={ releaseDate }>
 						{
 							releaseDate ? moment( releaseDate ).local().format( 'MMM, Y' ) : ''
 						}
@@ -223,7 +223,7 @@ registerBlockType( 'rt-blocks/timeline', {
 		return (
 			<div className={ className + ' timeline-' + releaseType }>
 				<div className={ 'timeline-container' }>
-					<time className='timeline-date' data-time={ releaseDate }>
+					<time className='timeline-date' datetime={ releaseDate }>
 						{
 							releaseDate ? moment( releaseDate ).local().format( 'MMM, Y' ) : ''
 						}
