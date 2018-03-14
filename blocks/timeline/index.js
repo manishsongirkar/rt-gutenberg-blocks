@@ -16,7 +16,7 @@ const {
 	  } = wp.components;
 
 /* Register block type */
-registerBlockType( 'rt-blocks/timeline', {
+registerBlockType( 'rtgb/timeline', {
 
 	title: __( 'Timeline' ),
 	icon: 'list-view',

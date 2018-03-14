@@ -8,7 +8,7 @@ const {
 	InspectorControls,
 	source: { children },
 	MediaUpload,
-		  BlockControls,
+	BlockControls,
 } = wp.blocks;
 
 const {
@@ -19,7 +19,7 @@ const {
 		  IconButton,
 	  } = wp.components;
 
-registerBlockType( 'rt-blocks/case-study-excerpt', {
+registerBlockType( 'rtgb/case-study-excerpt', {
 
 	title: __( 'Case Study Excerpt' ),
 	icon: 'search',
@@ -76,7 +76,7 @@ registerBlockType( 'rt-blocks/case-study-excerpt', {
 
 	},
 
-	getEditWrapperProps: attribute => {
+	getEditWrapperProps() {
 		return { 'data-align': 'wide' };
 	},
 
@@ -172,6 +172,7 @@ registerBlockType( 'rt-blocks/case-study-excerpt', {
 							/>
 
 						</Placeholder>
+
 						<figure key="image">
 							<img src={ mediaURL } alt={ mediaALT } id={ mediaId } />
 							{ mediaCaption ? <figcaption>{ mediaCaption }</figcaption> : '' }
